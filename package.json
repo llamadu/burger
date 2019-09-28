@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/llamadu/burger/issues"
   },
-  "homepage": "https://github.com/llamadu/burger#readme"
+  "homepage": "https://github.com/llamadu/burger#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
