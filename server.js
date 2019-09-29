@@ -1,9 +1,22 @@
-// Dependencies
 var express = require("express");
-
-// Create an instance of the express app.
+var methodOverride = require("method-override");
 var app = express();
+var bodyParser = require("body-parser");
 
-// Set the port of our application
-// process.env.PORT lets the port be set by Heroku
-var PORT = process.env.PORT || 8080;
+var port = process.env.PORT || 3000;
+
+app.use(express.static("public"));
+
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(methodOverride('_method'));
+
+var exphbs = require("express-handlebars");
+
+app.engine("handlebars", exphbs({defaultLayout: "main"}));
+app.set("view engine", "handlebars");
+
+var routes = require("./controllers/burgers_controller.js");
+
+app.use("/", routes);
+
+app.listen(port);
